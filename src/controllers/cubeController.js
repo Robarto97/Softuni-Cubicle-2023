@@ -26,7 +26,7 @@ router.get("/:cubeId/details", (req, res) => {
   if (!currCube) {
     return res.redirect("/404");
   }
-  
+
   res.render("details", { ...currCube });
 });
 

@@ -1,7 +1,7 @@
-const uniqid = require('uniqid')
+const uniqid = require("uniqid");
 const cubes = [];
 
-exports.getAll = () => cubes.slice()
+exports.getAll = () => cubes.slice();
 
 exports.create = (cubeData) => {
   const newCube = {
@@ -13,3 +13,5 @@ exports.create = (cubeData) => {
 
   return newCube;
 };
+
+exports.getOne = (cubeId) => cubes.find((c) => c.id === cubeId);

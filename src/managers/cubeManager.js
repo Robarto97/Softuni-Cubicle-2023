@@ -28,4 +28,10 @@ exports.create = async (cubeData) => {
   return cube;
 };
 
-exports.getOne = (cubeId) => Cube.findById(cubeId)
+exports.getOne = (cubeId) => Cube.findById(cubeId);
+
+exports.attachAccessory = async (cubeId, accessoryId) => {
+  return Cube.findByIdAndUpdate(cubeId, {
+    $push: { accessories: accessoryId },
+  });
+};

@@ -28,10 +28,12 @@ exports.create = async (cubeData) => {
   return cube;
 };
 
-exports.getOne = (cubeId) => Cube.findById(cubeId).populate('accessories');
+exports.getOne = (cubeId) => Cube.findById(cubeId).populate("accessories");
 
 exports.attachAccessory = async (cubeId, accessoryId) => {
   return Cube.findByIdAndUpdate(cubeId, {
     $push: { accessories: accessoryId },
   });
 };
+
+exports.delete = (cubeId) => Cube.findByIdAndDelete(cubeId);

@@ -5,9 +5,10 @@ exports.auth = async (req, res, next) => {
 
   if (token) {
     try {
-      const user = await jwt.verify(token, process.env.SECRET);
+      const decodedToken = await jwt.verify(token, process.env.SECRET);
 
-      req.user = user;
+      req.user = decodedToken;
+      res.locals.isAuthenticated = true
 
       next();
     } catch (error) {
@@ -18,3 +19,12 @@ exports.auth = async (req, res, next) => {
     next();
   }
 };
+
+
+exports.isAuth = (req,res,next) => {
+  if(!req.user) {
+    return res.redirect('/users/login')
+  }
+
+  next()
+}

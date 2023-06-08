@@ -5,6 +5,7 @@ const expressConfig = require("./config/expressConfig");
 const handlebarsConfig = require("./config/handlebarsConfig");
 const dbConnect = require("./config/dbConfig");
 const routes = require("./routes");
+const errorHandler = require("./middlewares/errorHandlerMiddleware");
 
 const app = express();
 
@@ -16,6 +17,8 @@ dbConnect()
 
 expressConfig(app);
 handlebarsConfig(app);
+
 app.use(routes);
+app.use(errorHandler);
 
 app.listen(PORT);
